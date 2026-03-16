@@ -363,8 +363,7 @@ ds = [r['Cohens_d'] for r in ttest_results]
 ps = [r['p'] for r in ttest_results]
 
 y_pos = np.arange(len(analysis_vars))
-colors = ['#7B4FA0' if p < .05 else NORM_COLOR if p < .10 else '#C0C0C0' for p in ps]
-
+colors = ["#20CD14" if p < .05 else "#3B82F6" if p < .10 else "#BE1010" for p in ps]
 ax.barh(y_pos, ds, color=colors, alpha=0.88, height=0.6, edgecolor='white', linewidth=0.5)
 ax.axvline(x=0, color='black', linewidth=1.2)
 ax.set_yticks(y_pos)
@@ -384,9 +383,9 @@ for i, (d, p) in enumerate(zip(ds, ps)):
     sig = '***' if p < .001 else '**' if p < .01 else '*' if p < .05 else '†' if p < .10 else ''
     ax.text(d + offset, i, f'{d:+.2f} {sig}', va='center', ha=ha, fontsize=9.5, fontweight='bold')
 
-legend_elements = [mpatches.Patch(facecolor='#7B4FA0', alpha=0.88, label='p < .05'),
-                   mpatches.Patch(facecolor=NORM_COLOR, alpha=0.88, label='p < .10'),
-                   mpatches.Patch(facecolor='#C0C0C0', alpha=0.88, label='n.s.')]
+legend_elements = [mpatches.Patch(facecolor='#20CD14', alpha=0.88, label='p < .05'),
+                   mpatches.Patch(facecolor='#3B82F6', alpha=0.88, label='p < .10 (marginal)'),
+                   mpatches.Patch(facecolor='#BE1010', alpha=0.88, label='n.s.')]
 ax.legend(handles=legend_elements, loc='lower right', fontsize=11, framealpha=0.9, edgecolor='gray')
 
 plt.tight_layout()
@@ -401,7 +400,7 @@ fig, axes = plt.subplots(1, 2, figsize=(12, 5))
 # Mid preferences
 pref_col = 'Based on your experience so far, which notification setting would you prefer for your daily life?'
 pref_order = ['Prefer DND ON', 'No preference', 'Prefer DND OFF']
-pref_colors = ['#8B6DB5', '#C0C0C0', '#E8A838']
+pref_colors = ['#20CD14', '#C0C0C0', '#BE1010']
 
 for idx, (survey, title) in enumerate([('Mid', 'Mid-Study Preferences'), ('Post', 'Post-Study Preferences')]):
     ax = axes[idx]

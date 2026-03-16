@@ -523,7 +523,7 @@ for var in all_vars:
     ps.append(p)
 
 y_pos = np.arange(len(all_vars))
-colors = ['#7B4FA0' if p < .05 else NORM_COLOR if p < .10 else '#C0C0C0' for p in ps]
+colors = ["#20CD14" if p < .05 else "#20CD14" if p < .10 else "#BE1010" for p in ps]
 
 ax.barh(y_pos, ds, color=colors, alpha=0.88, height=0.6, edgecolor='white', linewidth=0.5)
 ax.axvline(x=0, color='black', linewidth=1.2)
@@ -547,8 +547,8 @@ for i, (d, p) in enumerate(zip(ds, ps)):
 # Separator between individual items and composites
 ax.axhline(y=10.5, color='gray', linewidth=0.8, linestyle='--', alpha=0.5)
 
-legend_elements = [mpatches.Patch(facecolor='#7B4FA0', alpha=0.88, label='p < .05'),
-                   mpatches.Patch(facecolor=NORM_COLOR, alpha=0.88, label='p < .10'),
+legend_elements = [mpatches.Patch(facecolor='#20CD14', alpha=0.88, label='p < .05'),
+                   mpatches.Patch(facecolor='#20CD14', alpha=0.88, label='p < .10'),
                    mpatches.Patch(facecolor='#C0C0C0', alpha=0.88, label='n.s.')]
 ax.legend(handles=legend_elements, loc='lower right', fontsize=11, framealpha=0.9, edgecolor='gray')
 
